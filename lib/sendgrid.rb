@@ -28,7 +28,8 @@ module SendGrid
                       :default_footer_text, :default_spamcheck_score, :default_sg_unique_args
       end
       attr_accessor :sg_category, :sg_options, :sg_disabled_options, :sg_recipients, :sg_substitutions,
-                    :subscriptiontrack_text, :footer_text, :spamcheck_score, :sg_unique_args, :sg_send_at
+                    :subscriptiontrack_text, :footer_text, :spamcheck_score, :sg_unique_args, :sg_send_at,
+                    :sg_asm_group_id, :sg_asm_groups_to_display
     end
 
     # NOTE: This commented-out approach may be a "safer" option for Rails 3, but it
@@ -102,6 +103,10 @@ module SendGrid
   # https://sendgrid.com/docs/API_Reference/SMTP_API/suppressions.html
   def sendgrid_asm_group_id(asm_group_id)
     @sg_asm_group_id = asm_group_id
+  end
+
+  def sendgrid_asm_groups_to_display(asm_groups_to_display)
+    @sg_asm_groups_to_display = asm_groups_to_display
   end
 
   # Call within mailer method to override the default value.
